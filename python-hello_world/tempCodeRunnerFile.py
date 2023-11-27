@@ -1,8 +1,9 @@
-word = "Holberton"
-word_first_3 = word[0:3]
-print("First 3 letters: {}".format(word_first_3))
-word_last_2 = word[-2:]
-print("Last 2 letters: {}".format(word_last_2))
-middle_index = len(word) // 2
-middle_word = word[middle_index - 1:middle_index + 5]  # Adjusted the slice to capture "olberto"
-print("Middle word: {}".format(middle_word))
+import random
+number = random.randint(-10, 10)
+
+if number > 0:
+    print("The number {} is positive.".format(number))
+elif number == 0:
+    print("The number {} is zero.".format(number))
+else:
+    print("The number {} is negative.".format(number))
