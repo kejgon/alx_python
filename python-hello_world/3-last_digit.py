@@ -1,15 +1,22 @@
 import random
-number = random.randint(-10000, 10000)
-# Extract the last digit
-last_digit = abs(number) % 10
 
+# Generate a random number between -10000 and 10000 (inclusive)
+number = random.randint(-10000, 10000)
+
+# Extract the last digit with sign
+last_digit = number % 10 if number >= 0 else -(-number % 10)
+
+# Initialize an empty string to hold the classification
 classification = ""
 
+# Check conditions based on the value of the last digit
 if last_digit > 5:
     classification = "and is greater than 5"
+
 if last_digit == 0:
     classification = "and is 0"
-if last_digit != 0 and last_digit < 6:
+
+if 0 < last_digit < 6:
     classification = "and is less than 6 and not 0"
 
 # Print the result
