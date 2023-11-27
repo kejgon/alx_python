@@ -1,13 +1,8 @@
 import random
-number = random.randint(-10, 10)
-
-# Classify the number
+number = 98
 if number > 0:
-    classification = "is positive"
+    print("{} is positive.".format(number))
 elif number == 0:
-    classification = "is zero"
+    print("{} is zero.".format(number))
 else:
-    classification = "is negative"
-
-# Print the number and its classification
-print("The number {} {}".format(number, classification))
+    print("{} is negative.".format(number))
