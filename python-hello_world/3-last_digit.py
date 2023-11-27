@@ -3,14 +3,8 @@ number = random.randint(-10000, 10000)
 # Extract the last digit
 last_digit = abs(number) % 10
 
-# Extract the last digit
-last_digit = abs(number) % 10
-
-
-
-# Classify the last digit
 classification = ""
-# Classify the last digit
+
 if last_digit > 5:
     classification = "and is greater than 5"
 if last_digit == 0:
