@@ -1,1 +1,2 @@
-print("Programming is like building a multilingual puzzle")
+print("Last 2 letters: {}".format(word_last_2))
+# print("Middle word: {}".format(middle_word))
