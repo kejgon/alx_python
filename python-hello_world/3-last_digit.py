@@ -16,7 +16,7 @@ if last_digit > 5:
 if last_digit == 0:
     classification = "and is 0"
 
-if 0 < last_digit < 6:
+if last_digit < 6 and last_digit != 0:
     classification = "and is less than 6 and not 0"
 
 # Print the result
