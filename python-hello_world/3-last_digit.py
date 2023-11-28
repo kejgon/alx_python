@@ -9,7 +9,7 @@ if number >= 0:
 else:
     last_digit = -(-number % 10)
     
-# Initialize an empty string to hold the classification
+# Initialize an empty string to hold the output
 output = ""
 
 # Check conditions based on the value of the last digit
