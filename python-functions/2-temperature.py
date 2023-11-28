@@ -3,7 +3,6 @@ def convert_to_celsius(fahrenheit):
     return "{:.2f}".format(celsius)
 
 
-
 convert_to_celsius(100)
 convert_to_celsius(-40)
 convert_to_celsius(-459.67)
