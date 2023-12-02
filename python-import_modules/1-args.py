@@ -1,4 +1,4 @@
-# argument_printer.py
+
 
 import sys
 
