@@ -64,6 +64,11 @@ cPrice = 100
 if uCountry == "South Sudan":
     print(f"Hi {uName}, because you're from {uCountry}!")
     print(f"The course \'{cName}\' Price is : ${cPrice - 95}.")
+
+elif uCountry == "US":
+    print(f"Hi {uName}, because you're from {uCountry}!")
+    print(f"The course \'{cName}\' Price is : ${cPrice - 10}.")
+
 else:
     print(f"Hi {uName}, because you're from {uCountry}!")
     print(f"The course \'{cName}\' Price is : ${cPrice - 50}.")
