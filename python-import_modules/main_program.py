@@ -1,11 +1,16 @@
 # main_program.py
 
+# Import the add function dynamically from 0-add.py
+import importlib
+
+# Replace "0-add" with the actual module name (without the .py extension)
+module_name = "0-add"
+add_module = importlib.import_module(module_name)
+add = add_module.add
+
 # Assign values to variables a and b
 a = 1
 b = 2
 
-# Import and alias the add function from 0-add.py
-from 0-add import add
-if __name__ == "__main__":
-
-    print("{} + {} = {}".format(a, b, add(a, b)))
+# Print the result using string format
+print("{} + {} = {}".format(a, b, add(a, b)))
