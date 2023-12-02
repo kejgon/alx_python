@@ -8,4 +8,6 @@ def add(a, b):
 
 
 
+add(a, b)
+
 print("{} + {} = {}".format(a, b, add(a, b)))
