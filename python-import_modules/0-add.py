@@ -4,10 +4,17 @@ a = 1
 b = 2
 
 def add(a, b):
-    return a + b
+    """My addition function
 
-# This block ensures that the code below is only executed
-# when the module is run as the main program, not when imported
+    Args:
+        a: first integer
+        b: second integer
+
+    Returns:
+        The return value. a + b
+    """
+    return (a + b)
+
 if __name__ == "__main__":
     print("{} + {} = {}".format(a, b, add(a, b)))
  
