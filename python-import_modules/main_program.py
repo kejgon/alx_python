@@ -5,7 +5,7 @@ a = 1
 b = 2
 
 # Import and alias the add function from 0-add.py
-from add_0 import add
+from 0-add import add
 if __name__ == "__main__":
 
     print("{} + {} = {}".format(a, b, add(a, b)))
