@@ -3,7 +3,8 @@ def print_matrix_integer(matrix=[]):
         print(" ".join("{:d}".format(num) for num in row), end="")
         print()
 
-# Example usage
+
+
 if __name__ == "__main__":
     matrix = [
         [1, 2, 3],
