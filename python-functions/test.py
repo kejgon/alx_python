@@ -76,11 +76,53 @@
 #################################################
 ############# Ternary Condition ############
 #################################################
-print("*" * 73)
-print(("*" * 25) + " " + "Ternary Condition" + " " +("*" * 25) )
-print("*" * 73)
+# print("*" * 73)
+# print(("*" * 25) + " " + "Ternary Condition" + " " +("*" * 25) )
+# print("*" * 73)
 
-age = 17
-adultMovies = 18
+# age = 17
+# adultMovies = 18
 
-print("Movie is not good for you" if age < adultMovies else "Movie is good for you")
+# print("Movie is not good for you" if age < adultMovies else "Movie is good for you")
+
+
+#################################################
+############# Calculating Person Age with Time Unites Advanced ############
+#################################################
+print("*" * 100)
+print(" Calculating Person Age with Time Units ".center(100, "#"))
+print("*" * 100)
+
+age = int(input("Enter your age: ").strip())
+print("NOTE! You can enter the unit or the first letter of the unit you wish to ".center(100, "#"))
+unit = input("Enter the unit you wish (months, weeks, days, hours, minutes, seconds, or first letter of each unit): ").strip()
+
+# Getting the unit values
+months = age * 12
+weeks = months * 4
+days = age * 365
+hours = days * 24
+minutes = hours * 60
+seconds = minutes * 60
+
+if unit == "months" or unit == "m":
+    print(f"You have chosen {unit}")
+    print(f"You have lived for {months:,} months.")
+elif unit == "weeks" or unit == "w":
+    print(f"You have chosen {unit}")
+    print(f"You have lived for {weeks:,} weeks.")
+elif unit == "days" or unit == "d":
+    print(f"You have chosen {unit}")
+    print(f"You have lived for {days:,} days.")
+elif unit == "hours" or unit == "h":
+    print(f"You have chosen {unit}")
+    print(f"You have lived for {hours:,} hours.")
+elif unit == "minutes" or unit == "mi":
+    print(f"You have chosen {unit}")
+    print(f"You have lived for {minutes:,} minutes.")
+elif unit == "seconds" or unit == "s":
+    print(f"You have chosen {unit}")
+    print(f"You have lived for {seconds:,} seconds.")
+else:
+    print("Invalid unit entered. Please enter a valid unit.")
+
