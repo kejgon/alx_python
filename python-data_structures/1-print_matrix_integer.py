@@ -1,12 +1,11 @@
 def print_matrix_integer(matrix=[]):
     for row in matrix:
-        for num in row:
-            print("{:d}".format(num), end=" ")
-        print()
+        print(" ".join(map(str, row)))
 
 # Example usage
 if __name__ == "__main__":
-    matrix=[]
+    matrix = []
 
     print_matrix_integer(matrix)
-  
+    print("--")
+    print_matrix_integer()
