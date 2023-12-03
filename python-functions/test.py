@@ -52,23 +52,35 @@
 ##################################################
 # ############# Make Decision ############
 ##################################################
+# print("*" * 73)
+# print(("*" * 25) + " " + "Make Decision" + " " +("*" * 25) )
+# print("*" * 73)
+
+# uName = "Kejgon James"
+# uCountry = "South Korea"
+# cName = "Python"
+# cPrice = 100
+
+# if uCountry == "South Sudan":
+#     print(f"Hi {uName}, because you're from {uCountry}!")
+#     print(f"The course \'{cName}\' Price is : ${cPrice - 95}.")
+
+# elif uCountry == "US":
+#     print(f"Hi {uName}, because you're from {uCountry}!")
+#     print(f"The course \'{cName}\' Price is : ${cPrice - 10}.")
+
+# else:
+#     print(f"Hi {uName}, because you're from {uCountry}!")
+#     print(f"The course \'{cName}\' Price is : ${cPrice - 50}.")
+
+#################################################
+############# Ternary Condition ############
+#################################################
 print("*" * 73)
-print(("*" * 25) + " " + "Make Decision" + " " +("*" * 25) )
+print(("*" * 25) + " " + "Ternary Condition" + " " +("*" * 25) )
 print("*" * 73)
 
-uName = "Kejgon James"
-uCountry = "South Korea"
-cName = "Python"
-cPrice = 100
+age = 17
+adultMovies = 18
 
-if uCountry == "South Sudan":
-    print(f"Hi {uName}, because you're from {uCountry}!")
-    print(f"The course \'{cName}\' Price is : ${cPrice - 95}.")
-
-elif uCountry == "US":
-    print(f"Hi {uName}, because you're from {uCountry}!")
-    print(f"The course \'{cName}\' Price is : ${cPrice - 10}.")
-
-else:
-    print(f"Hi {uName}, because you're from {uCountry}!")
-    print(f"The course \'{cName}\' Price is : ${cPrice - 50}.")
+print("Movie is not good for you" if age < adultMovies else "Movie is good for you")
