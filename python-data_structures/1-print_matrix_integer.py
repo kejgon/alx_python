@@ -6,6 +6,6 @@ def print_matrix_integer(matrix=[]):
 
 # Example usage
 if __name__ == "__main__":
-
-    print_matrix_integer()
+    matrix = [[1, 2], [4, 5], [7, 8]]
+    print_matrix_integer(matrix)
   
