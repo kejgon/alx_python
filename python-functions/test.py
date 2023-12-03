@@ -89,40 +89,85 @@
 #################################################
 ############# Calculating Person Age with Time Unites Advanced ############
 #################################################
+# print("*" * 100)
+# print(" Calculating Person Age with Time Units ".center(100, "#"))
+# print("*" * 100)
+
+# age = int(input("Enter your age: ").strip())
+# print("NOTE! You can enter the unit or the first letter of the unit you wish to ".center(100, "#"))
+# unit = input("Enter the unit you wish (months, weeks, days, hours, minutes, seconds, or first letter of each unit): ").strip()
+
+# # Getting the unit values
+# months = age * 12
+# weeks = months * 4
+# days = age * 365
+# hours = days * 24
+# minutes = hours * 60
+# seconds = minutes * 60
+
+# if unit == "months" or unit == "m":
+#     print(f"You have chosen {unit}")
+#     print(f"You have lived for {months:,} months.")
+# elif unit == "weeks" or unit == "w":
+#     print(f"You have chosen {unit}")
+#     print(f"You have lived for {weeks:,} weeks.")
+# elif unit == "days" or unit == "d":
+#     print(f"You have chosen {unit}")
+#     print(f"You have lived for {days:,} days.")
+# elif unit == "hours" or unit == "h":
+#     print(f"You have chosen {unit}")
+#     print(f"You have lived for {hours:,} hours.")
+# elif unit == "minutes" or unit == "mi":
+#     print(f"You have chosen {unit}")
+#     print(f"You have lived for {minutes:,} minutes.")
+# elif unit == "seconds" or unit == "s":
+#     print(f"You have chosen {unit}")
+#     print(f"You have lived for {seconds:,} seconds.")
+# else:
+#     print("Invalid unit entered. Please enter a valid unit.")
+
+#################################################
+############# Calculating Person Age with Time Unites Advanced ############
+#################################################
 print("*" * 100)
-print(" Calculating Person Age with Time Units ".center(100, "#"))
+print(" Practicle Membership Control ".center(100, "#"))
 print("*" * 100)
 
-age = int(input("Enter your age: ").strip())
-print("NOTE! You can enter the unit or the first letter of the unit you wish to ".center(100, "#"))
-unit = input("Enter the unit you wish (months, weeks, days, hours, minutes, seconds, or first letter of each unit): ").strip()
+# List contain the Admins
+admins = ["Kejgon","James","Laa","Kimo","Bumana"]
 
-# Getting the unit values
-months = age * 12
-weeks = months * 4
-days = age * 365
-hours = days * 24
-minutes = hours * 60
-seconds = minutes * 60
+#login Input
+name = input("Enter your username: ").strip().capitalize()
 
-if unit == "months" or unit == "m":
-    print(f"You have chosen {unit}")
-    print(f"You have lived for {months:,} months.")
-elif unit == "weeks" or unit == "w":
-    print(f"You have chosen {unit}")
-    print(f"You have lived for {weeks:,} weeks.")
-elif unit == "days" or unit == "d":
-    print(f"You have chosen {unit}")
-    print(f"You have lived for {days:,} days.")
-elif unit == "hours" or unit == "h":
-    print(f"You have chosen {unit}")
-    print(f"You have lived for {hours:,} hours.")
-elif unit == "minutes" or unit == "mi":
-    print(f"You have chosen {unit}")
-    print(f"You have lived for {minutes:,} minutes.")
-elif unit == "seconds" or unit == "s":
-    print(f"You have chosen {unit}")
-    print(f"You have lived for {seconds:,} seconds.")
+#checks if username is in the Admins list
+
+if name in admins:
+
+    print(f"Hello {name}, Welcome back.\n\n")
+    option = input("Do you want to Update / 'U' or Delete / 'D' your username? ").strip().capitalize()
+
+    if option == "Update" or option == "U":
+        newUsername = input("Please enter your new username? ").strip().capitalize()
+        admins[admins.index(name)] = newUsername
+        print(f"Your username was updated successfully to : {newUsername}")
+        print(admins)
+
+    elif option == "Delete" or option == "D":
+        admins.remove(name)
+        print(f"Your username was deleted successfully")
+        print(admins)
+
+    else:
+        print("invalid option")
+
 else:
-    print("Invalid unit entered. Please enter a valid unit.")
+    print("You'r not admin or invalid username")
+    status = input("You want to be Added? Yes / Y or No / N?").strip().capitalize()
+    if status == "Yes" or status == "Y":
+        admins.append(name)
+        print("You have been added successfully.")
+        print(admins)
+    elif status == "No" or status == "N":
+        print("Come back later.")
+
 
