@@ -1,9 +1,8 @@
-import random
-number = random.randint(-10, 10)
+word = "Holberton"
+word_first_3 = word[0:3]
+word_last_2 = word[-2:]
+middle_word = word[1:8]
 
-if number > 0:
-    print("The number {} is positive.".format(number))
-elif number == 0:
-    print("The number {} is zero.".format(number))
-else:
-    print("The number {} is negative.".format(number))
+print("First 3 letters: {}".format(word_first_3))
+print("Last 2 letters: {}".format(word_last_2))
+print("Middle word: {}".format(middle_word))
