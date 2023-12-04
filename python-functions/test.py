@@ -216,7 +216,7 @@ password = '123@.com'
 pasInput = input("Enter your password: ").strip()
 
 while password != pasInput:
-    print(f"Wrong password, you\'ve left with {'left with' if attempt == 0 else attempt} attempts")
+    print(f"Wrong password, you\'ve left with {attempt} attempts")
     pasInput = input("Enter your password: ").strip()
     attempt -= 1
 
