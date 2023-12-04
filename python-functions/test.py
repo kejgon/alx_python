@@ -175,34 +175,55 @@
 ############# Loop => While Practice ############
 ############# Simple Bookmark Manager ############
 #################################################
+# print("*" * 100)
+# print(" Simple Bookmark Manager ".center(100, "#"))
+# print(("*" * 100) + "\n")
+
+# bookmarksList = []
+
+# #Maximum websites allowed in the bookmarks list
+# maxBookmarks = 5
+
+# while maxBookmarks > 0:
+#     websites = input("Ente yout website without http:// ")
+#     bookmarksList.append(f"http://{websites.strip().lower()}")
+#     print(bookmarksList)
+
+#     # Decrease One number from the number of bookmarksList
+#     maxBookmarks -= 1
+#     # Display a messege after the adding a website in the bookmarks list
+#     print(f"Website added, {maxBookmarks} spots left.")
+
+# else:
+#     print("The bookmarks is full")
+
+# count = 0
+# for bookmark in bookmarksList:
+#     print(f"# {count + 1} - {bookmark}")
+#     count += 1
+
+
+#################################################
+############# Loop => While Practice ############
+############# Simple Password Guess ############
+#################################################
 print("*" * 100)
-print(" Simple Bookmark Manager ".center(100, "#"))
+print(" Simple Password Guess ".center(100, "#"))
 print(("*" * 100) + "\n")
 
-bookmarksList = []
+attempt = 3
+password = '123@.com'
+pasInput = input("Enter your password: ").strip()
 
-#Maximum websites allowed in the bookmarks list
-maxBookmarks = 5
+while password != pasInput:
+    print(f"Wrong password, you\'ve left with {'left with' if attempt == 0 else attempt} attempts")
+    pasInput = input("Enter your password: ").strip()
+    attempt -= 1
 
-while maxBookmarks > 0:
-    websites = input("Ente yout website without http:// ")
-    bookmarksList.append(f"http://{websites.strip().lower()}")
-    print(bookmarksList)
 
-    # Decrease One number from the number of bookmarksList
-    maxBookmarks -= 1
-    # Display a messege after the adding a website in the bookmarks list
-    print(f"Website added, {maxBookmarks} spots left.")
+    if attempt == 0:
+        print(f"All your attempts are done.")
+        break
 
 else:
-    print("The bookmarks is full")
-
-count = 0
-for bookmark in bookmarksList:
-    print(f"# {count + 1} - {bookmark}")
-    count += 1
-
-
-
-
-
+    print(f"Correct password")
