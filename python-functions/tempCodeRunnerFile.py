@@ -1,5 +1,3 @@
-
-counter = 1
-while counter <= 10:
-    if counter % 2 == 0:
-        print(counter)
+print("*" * 100)
+print(" Simple Bookmark Manager ".center(100, "#"))
+print("*" * 100)

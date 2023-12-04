@@ -129,45 +129,80 @@
 #################################################
 ############# Calculating Person Age with Time Unites Advanced ############
 #################################################
-print("*" * 100)
-print(" Practicle Membership Control ".center(100, "#"))
-print("*" * 100)
+# print("*" * 100)
+# print(" Practicle Membership Control ".center(100, "#"))
+# print("*" * 100)
 
-# List contain the Admins
-admins = ["Kejgon","James","Laa","Kimo","Bumana"]
+# # List contain the Admins
+# admins = ["Kejgon","James","Laa","Kimo","Bumana"]
 
-#login Input
-name = input("Enter your username: ").strip().capitalize()
+# #login Input
+# name = input("Enter your username: ").strip().capitalize()
 
 #checks if username is in the Admins list
 
-if name in admins:
+# if name in admins:
 
-    print(f"Hello {name}, Welcome back.\n\n")
-    option = input("Do you want to Update / 'U' or Delete / 'D' your username? ").strip().capitalize()
+#     print(f"Hello {name}, Welcome back.\n\n")
+#     option = input("Do you want to Update / 'U' or Delete / 'D' your username? ").strip().capitalize()
 
-    if option == "Update" or option == "U":
-        newUsername = input("Please enter your new username? ").strip().capitalize()
-        admins[admins.index(name)] = newUsername
-        print(f"Your username was updated successfully to : {newUsername}")
-        print(admins)
+#     if option == "Update" or option == "U":
+#         newUsername = input("Please enter your new username? ").strip().capitalize()
+#         admins[admins.index(name)] = newUsername
+#         print(f"Your username was updated successfully to : {newUsername}")
+#         print(admins)
 
-    elif option == "Delete" or option == "D":
-        admins.remove(name)
-        print(f"Your username was deleted successfully")
-        print(admins)
+#     elif option == "Delete" or option == "D":
+#         admins.remove(name)
+#         print(f"Your username was deleted successfully")
+#         print(admins)
 
-    else:
-        print("invalid option")
+#     else:
+#         print("invalid option")
+
+# else:
+#     print("You'r not admin or invalid username")
+#     status = input("You want to be Added? Yes / Y or No / N?").strip().capitalize()
+#     if status == "Yes" or status == "Y":
+#         admins.append(name)
+#         print("You have been added successfully.")
+#         print(admins)
+#     elif status == "No" or status == "N":
+#         print("Come back later.")
+
+
+#################################################
+############# Loop => While Practice ############
+############# Simple Bookmark Manager ############
+#################################################
+print("*" * 100)
+print(" Simple Bookmark Manager ".center(100, "#"))
+print(("*" * 100) + "\n")
+
+bookmarksList = []
+
+#Maximum websites allowed in the bookmarks list
+maxBookmarks = 5
+
+while maxBookmarks > 0:
+    websites = input("Ente yout website without http:// ")
+    bookmarksList.append(f"http://{websites.strip().lower()}")
+    print(bookmarksList)
+
+    # Decrease One number from the number of bookmarksList
+    maxBookmarks -= 1
+    # Display a messege after the adding a website in the bookmarks list
+    print(f"Website added, {maxBookmarks} spots left.")
 
 else:
-    print("You'r not admin or invalid username")
-    status = input("You want to be Added? Yes / Y or No / N?").strip().capitalize()
-    if status == "Yes" or status == "Y":
-        admins.append(name)
-        print("You have been added successfully.")
-        print(admins)
-    elif status == "No" or status == "N":
-        print("Come back later.")
+    print("The bookmarks is full")
+
+count = 0
+for bookmark in bookmarksList:
+    print(f"# {count + 1} - {bookmark}")
+    count += 1
+
+
+
 
 
