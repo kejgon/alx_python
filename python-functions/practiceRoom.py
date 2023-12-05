@@ -229,34 +229,40 @@
 #     print(f"Correct password")
 
 
+# #################################################
+# ############# Function Packing, Unpacking Arguments Trainings ############
+# #################################################
+# print("*" * 100)
+# print(" Function Packing, Unpacking Arguments Trainings ".center(100, "#"))
+# print(("*" * 100) + "\n")
+
+# mySkillsLevels = {
+#     "front_End": ["HTML", "CSS", "JavaScripts"],
+# }
+
+# softSkill = ("Problem Solving", "Communication Skill", "Project Management")
+
+# def skills_ShowCase(name, *soft_skill, **myskills_level):
+#     print(f"Hi {name}, welcome to your skills showcase")
+#     print("Your soft skills are :")
+
+#     for softK in soft_skill:
+#         print(f" - {softK}")
+
+#     for mslevel_key, levelValue in myskills_level.items():
+#         print(f"{mslevel_key} skills are:")
+#         for level in levelValue:
+#             print(f"  - {level}")
+
+
+
+# skills_ShowCase("kejgon", *softSkill, **mySkillsLevels)
+
+
+
 #################################################
-############# Function Packing, Unpacking Arguments Trainings ############
+############# Function Recusion ############
 #################################################
 print("*" * 100)
-print(" Function Packing, Unpacking Arguments Trainings ".center(100, "#"))
+print(" Function Recusion  ".center(100, "#"))
 print(("*" * 100) + "\n")
-
-mySkillsLevels = {
-    "front_End": ["HTML", "CSS", "JavaScripts"],
-}
-
-softSkill = ("Problem Solving", "Communication Skill", "Project Management")
-
-def skills_ShowCase(name, *soft_skill, **myskills_level):
-    print(f"Hi {name}, welcome to your skills showcase")
-    print("Your soft skills are :")
-
-    for softK in soft_skill:
-        print(f" - {softK}")
-
-    for mslevel_key, levelValue in myskills_level.items():
-        print(f"{mslevel_key} skills are:")
-        for level in levelValue:
-            print(f"  - {level}")
-
-
-
-skills_ShowCase("kejgon", *softSkill, **mySkillsLevels)
-
-
-
