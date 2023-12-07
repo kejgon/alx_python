@@ -1,3 +1,3 @@
-print("*" * 100)
-print(" Simple Bookmark Manager ".center(100, "#"))
-print("*" * 100)
+
+    if len(word) == 1:
+        return word
