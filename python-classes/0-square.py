@@ -4,35 +4,35 @@ class Square:
         self.__size = size
 
     def my_square(self, x):
-        return x ** 2  
+        return x ** 2
 
 # Create an instance of the Square class
-square = Square()
+mysquare = Square(3)
 
-# Access the private attribute using the correct syntax (no direct use of __size)
-print('{}'.format(square._Square__size))  # Corrected attribute access
+# Correct output - case: mysquare = Square(3)
+print(type(mysquare))
+print(mysquare.__dict__)
 
-# Use the my_square method
-print(square.my_square(2))
-print(square.my_square.__dict__)
+# Correct output - case: mysquare = Square(3)
+print(type(mysquare))
+print(mysquare.__dict__)
 
+# mysquare = Square(89)
+print(type(mysquare))
+print(mysquare.__dict__)
 
-# class Square:
-#     def __init__(self, size):
-#         self.__size = size
+# Correct output - case: mysquare = Square(3)
+print(type(mysquare))
+print(mysquare.__dict__)
 
-# # Test the Square class
-# if __name__ == "__main__":
-#     my_square = Square(3)
-#     print(type(my_square))
-#     print(my_square.__dict__)
+# Try to access the non-existent attribute 'size'
+try:
+    print(mysquare.size)
+except AttributeError as e:
+    print(e)
 
-#     try:
-#         print(my_square.size)
-#     except AttributeError as e:
-#         print(e)
-
-#     try:
-#         print(my_square.__size)
-#     except AttributeError as e:
-#         print(e)
+# Try to access the non-mangled attribute '_size'
+try:
+    print(mysquare._size)
+except AttributeError as e:
+    print(e)
