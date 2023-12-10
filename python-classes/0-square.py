@@ -7,12 +7,12 @@ class Square:
         return x ** 2
 
 # Correct output - case: mysquare = Square(3)
-mysquare = Square(3)
+mysquare = Square()
 print(type(mysquare))
 print(mysquare.__dict__)
 
 # Correct output - case: mysquare = Square(3)
-mysquare = Square(3)
+mysquare = Square(5)  # Provide a value for size when creating an instance
 print(type(mysquare))
 print(mysquare.__dict__)
 
