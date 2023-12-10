@@ -1,6 +1,6 @@
 class Square:
 
-    def __init__(self, size=2):
+    def __init__(self, size):
         self.__size = size
 
     def my_square(self, x):
