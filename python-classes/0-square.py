@@ -14,6 +14,8 @@ print('{}'.format(square._Square__size))  # Corrected attribute access
 
 # Use the my_square method
 print(square.my_square(2))
+print(square.my_square.__dict__)
+
 
 # class Square:
 #     def __init__(self, size):
