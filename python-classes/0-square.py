@@ -6,32 +6,16 @@ class Square:
     def my_square(self, x):
         return x ** 2
 
-# Create an instance of the Square class
-mysquare1 = Square(3) # Correct output - case: mysquare = Square(3)
-print(type(mysquare1))
-print(mysquare1.__dict__)
+my_square = Square(3)
+print(type(my_square))
+print(my_square.__dict__)
 
-
-
-mysquare2 = Square(89)
-# mysquare = Square(89)
-print(type(mysquare2))
-print(mysquare2.__dict__)
-
-mysquare3 = Square(3) # Correct output - case: mysquare = Square(3)
-
-# Correct output - case: mysquare = Square(3)
-print(type(mysquare3))
-print(mysquare3.__dict__)
-
-# Try to access the non-existent attribute 'size'
 try:
-    print(mysquare3.size)
+    print(my_square.size)
 except AttributeError as e:
     print(e)
 
-# Try to access the non-mangled attribute '_size'
 try:
-    print(mysquare3._size)
+    print(my_square._Square__size)
 except AttributeError as e:
     print(e)
