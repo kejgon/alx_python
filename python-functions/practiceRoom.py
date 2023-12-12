@@ -260,6 +260,37 @@
 
 
 
+# #################################################
+# ############# Function Recusion ############
+# #################################################
+# print("*" * 100)
+# print(" Function Recusion  ".center(100, "#"))
+# print(("*" * 100) + "\n") 
+
+# # CLEAR WORD FUNCTION
+
+# word = "WWWorlldd"
+
+# def clear_word(word):
+
+#     if len(word) == 1:
+#         return word
+
+#     if word[0] == word[1]:
+
+#         print(f"Print before the condition {word}")
+
+#         return clear_word(word[1:])
+
+#     print(f"Print Before Return {word}")
+
+#     return word[0] + clear_word(word[1:])
+
+# print(clear_word(word))        
+
+
+
+
 #################################################
 ############# Function Recusion ############
 #################################################
@@ -267,18 +298,4 @@ print("*" * 100)
 print(" Function Recusion  ".center(100, "#"))
 print(("*" * 100) + "\n") 
 
-# CLEAR WORD FUNCTION
-
-word = "WWWorlldd"
-
-def clear_word(word):
-
-    if len(word) == 1:
-        return word
-
-    if word[0] == word[1]:
-        return clear_word(word[1:])
-
-    return word[0] + clear_word(word[1:])
-
-print(clear_word(word))        
+  
