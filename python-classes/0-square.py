@@ -2,37 +2,24 @@ class Square:
     def __init__(self, size):
         self.__size = size
 
-    def dict_(self):
-        return {'__size': self.__size}
+# Example usage
+if __name__ == "__main__":
+    my_square = Square(3)
 
-# Case 1
-mysquare = Square(3)
-print(type(mysquare))
-print(mysquare.dict_)
+    # Output: <class '__main__.Square'>
+    print(type(my_square))
 
-# Case 2
-mysquare = Square(89)
-print(type(mysquare))
-print(mysquare.dict_)
+    # Output: {'_Square__size': 3}
+    print(my_square.__dict__)
 
-# Case 3
-mysquare = Square(3)
-print(type(mysquare))
-print(mysquare.dict_)
+    # Output: 'Square' object has no attribute 'size'
+    try:
+        print(my_square.size)
+    except AttributeError as e:
+        print(e)
 
-# Case 4
-try:
-    print(mysquare.size)
-except AttributeError as e:
-    print(e)
-
-# Case 5
-mysquare = Square(3)
-print(type(mysquare))
-print(mysquare.dict_)
-
-# Case 6
-try:
-    print(mysquare._size)
-except AttributeError as e:
-    print(e)
+    # Output: 'Square' object has no attribute '__size'
+    try:
+        print(my_square.__size)
+    except AttributeError as e:
+        print(e)
