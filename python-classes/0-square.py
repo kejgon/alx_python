@@ -8,7 +8,7 @@ class Square:
         __size (int): The size of the square.
 
     Methods:
-        No additional methods are provided in this simple example.
+        No additional methods are provided in this Class
 
     Example:
         >>> square = Square(5)
