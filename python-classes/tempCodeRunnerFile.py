@@ -1,17 +1,12 @@
+class Base():
+    """ My base class """
 
+    __nb_instances = 0
 
-# Test cases
-my_square = Square(3)
-my_square.my_print()
+    def __init__(self):
+        Base.__nb_instances += 1
+        self.id = Base.__nb_instances
 
-print("--")
-
-my_square.size = 10
-my_square.my_print()
-
-print("--")
-
-my_square.size = 0
-my_square.my_print()
-
-print("--")
+for i in range(3):
+    b = Base()
+print(b.id)
