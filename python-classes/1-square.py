@@ -1,5 +1,26 @@
 class Square:
+    """A class representing a square.
+
+    The Square class is designed to create square objects with a specified size.
+    It initializes the size attribute during object creation.
+
+    Attributes:
+        __size (int): The size of the square.
+
+    Methods:
+        No additional methods are provided in this Class
+
+    """
+
     def __init__(self, size=0):
+        """Initialize a Square object with a specified size.
+
+        Args:
+            size (int): The size of the square. Defaults to 0.
+                Raises:
+                    TypeError: If size is not an integer.
+                    ValueError: If size is less than 0.
+        """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         elif size < 0:
@@ -7,35 +28,4 @@ class Square:
         else:
             self.__size = size
 
-# Test cases
-my_square_1 = Square(3)
-print(type(my_square_1))
-print(my_square_1.__dict__)
 
-my_square_2 = Square()
-print(type(my_square_2))
-print(my_square_2.__dict__)
-
-try:
-    print(my_square_1.size)
-except Exception as e:
-    print(e)
-
-try:
-    print(my_square_1.__size)
-except Exception as e:
-    print(e)
-
-try:
-    my_square_3 = Square("3")
-    print(type(my_square_3))
-    print(my_square_3.__dict__)
-except Exception as e:
-    print(e)
-
-try:
-    my_square_4 = Square(-89)
-    print(type(my_square_4))
-    print(my_square_4.__dict__)
-except Exception as e:
-    print(e)
