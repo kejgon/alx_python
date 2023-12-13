@@ -2,8 +2,7 @@
     A class representing a square.
 """
 class Square:
-    """A class representing a square.
-
+    """
     The Square class is designed to create square objects with a specified size.
     It initializes the size attribute during object creation.
 
