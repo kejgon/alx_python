@@ -75,11 +75,11 @@ class Rectangle(BaseGeometry):
         return "[Rectangle] {}/{}".format(self.__width, self.__height)
 
 
-
+"""
+    The Square class represents a square and inherits from Rectangle.
+"""
 class Square(Rectangle):
     """
-    The Square class represents a square and inherits from Rectangle.
-
     Attributes:
         __size (int): The size of the square.
     """
