@@ -20,7 +20,3 @@ class BaseGeometry:
         """
         raise Exception("area() is not implemented")
 
-# Filter out the automatically added methods in Python 3.6+
-attributes = [attr for attr in dir(BaseGeometry) if not callable(getattr(BaseGeometry, attr))]
-
-# print(attributes)
