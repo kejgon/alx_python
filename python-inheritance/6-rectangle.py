@@ -4,8 +4,6 @@
 # base_geometry.py
 class BaseGeometry:
     """
-    The BaseGeometry class is the base class for geometry-related classes.
-
     It includes methods for calculating area and validating integer values.
     """
 
