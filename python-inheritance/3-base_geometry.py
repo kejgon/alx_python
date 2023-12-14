@@ -12,3 +12,10 @@ class BaseGeometry:
     It currently does not have any attributes or methods.
     """
     pass
+
+
+# bg = BaseGeometry()
+
+# print(bg)
+# print(dir(bg))
+# print(dir(BaseGeometry))
