@@ -8,7 +8,7 @@ class BaseGeometry:
     """
     The BaseGeometry class is the base class for geometry-related classes.
 
-    It currently does not have any attributes or methods.
+    It currently does not have any attributes.
     """
 
     def area(self):
