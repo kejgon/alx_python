@@ -3,8 +3,6 @@
 """
 class BaseGeometry:
     """
-    The BaseGeometry class is the base class for geometry-related classes.
-
     It includes methods for calculating area and validating integer values.
     """
 
@@ -33,3 +31,4 @@ class BaseGeometry:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
+
