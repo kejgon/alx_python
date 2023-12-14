@@ -1,0 +1,72 @@
+"""
+    The BaseGeometry class is the base class for geometry-related classes.
+"""
+class BaseGeometry:
+    """
+    The BaseGeometry class is the base class for geometry-related classes.
+    It includes methods for calculating area and validating integer values.
+    """
+
+    def area(self):
+        """
+        Public instance method to calculate the area.
+        Raises:
+            Exception: This method is not implemented in the base class.
+        """
+        raise Exception("area() is not implemented")
+
+    def integer_validator(self, name, value):
+        """
+        Validate an integer value.
+
+        Args:
+            name (str): The name of the value being validated.
+            value (int): The value to be validated.
+
+        Raises:
+            TypeError: If the value is not an integer.
+            ValueError: If the value is less than or equal to 0.
+        """
+        if not isinstance(value, int):
+            raise TypeError("{} must be an integer".format(name))
+        if value <= 0:
+            raise ValueError("{} must be greater than 0".format(name))
+
+class Rectangle(BaseGeometry):
+    """
+    The Rectangle class represents a rectangle and inherits from BaseGeometry.
+
+    Attributes:
+        __width (int): The width of the rectangle.
+        __height (int): The height of the rectangle.
+    """
+
+    def __init__(self, width, height):
+        """
+        Initialize a Rectangle instance with the specified width and height.
+
+        Args:
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
+        """
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+        self.__width = width
+        self.__height = height
+
+# # Test the implementation
+# if __name__ == "__main__":
+#     r = Rectangle(3, 5)
+
+#     print(r)
+#     print(dir(r))
+
+#     try:
+#         print("Rectangle: {} - {}".format(r.width, r.height))
+#     except Exception as e:
+#         print("[{}] {}".format(e.__class__.__name__, e))
+
+#     try:
+#         r2 = Rectangle(4, True)
+#     except Exception as e:
+#         print("[{}] {}".format(e.__class__.__name__, e))
