@@ -1,15 +1,18 @@
 """
     The BaseGeometry class is the base class for geometry-related classes.
 """
+# base_geometry.py
 class BaseGeometry:
     """
     The BaseGeometry class is the base class for geometry-related classes.
+
     It includes methods for calculating area and validating integer values.
     """
 
     def area(self):
         """
         Public instance method to calculate the area.
+
         Raises:
             Exception: This method is not implemented in the base class.
         """
@@ -31,7 +34,7 @@ class BaseGeometry:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
-
+        
 class Rectangle(BaseGeometry):
     """
     The Rectangle class represents a rectangle and inherits from BaseGeometry.
@@ -53,6 +56,3 @@ class Rectangle(BaseGeometry):
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
-
-
-    
