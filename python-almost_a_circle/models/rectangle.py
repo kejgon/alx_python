@@ -1,7 +1,8 @@
-from models.base import Base
 """
         Rectangle class inherits from Base.
     """
+from models.base import Base
+
 class Rectangle(Base):
     """
         Rectangle class inherits from Base.
