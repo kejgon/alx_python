@@ -1,24 +1,4 @@
-"""
-    Base Class initialization
-"""
-class Base:
-    """Base class for managing id attribute in future classes."""
-
-    __nb_objects = 0
-
-    def __init__(self, id=None):
-        """
-        Initializes a new instance of the Base class.
-
-        Args:
-            id (int): If provided, assigns the id to the instance.
-                      If not provided, increments __nb_objects and assigns the new value to the instance id.
-        """
-        if id is not None:
-            self.id = id
-        else:
-            Base.__nb_objects += 1
-            self.id = Base.__nb_objects
+from models.base import Base
 
 class Rectangle(Base):
     """Rectangle class inherits from Base."""
@@ -79,13 +59,3 @@ class Rectangle(Base):
     def y(self, value):
         """Setter for the y attribute."""
         self.__y = value
-
-if __name__ == "__main__":
-    r1 = Rectangle(10, 2)
-    print(r1.id)
-
-    r2 = Rectangle(2, 10)
-    print(r2.id)
-
-    r3 = Rectangle(10, 2, 0, 0, 12)
-    print(r3.id)
