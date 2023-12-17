@@ -1,3 +1,5 @@
+"""Rectangle class inherits from Base."""
+
 from base import Base
 
 class Rectangle(Base):
