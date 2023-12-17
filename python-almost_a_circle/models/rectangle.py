@@ -1,10 +1,25 @@
 """
-    Rectangle class inherits from Base.
+    Base Class initialization
 """
-from base import Base
-"""
-    Rectangle class inherits from Base.
-"""
+class Base:
+    """Base class for managing id attribute in future classes."""
+
+    __nb_objects = 0
+
+    def __init__(self, id=None):
+        """
+        Initializes a new instance of the Base class.
+
+        Args:
+            id (int): If provided, assigns the id to the instance.
+                      If not provided, increments __nb_objects and assigns the new value to the instance id.
+        """
+        if id is not None:
+            self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
+
 class Rectangle(Base):
     """Rectangle class inherits from Base."""
 
