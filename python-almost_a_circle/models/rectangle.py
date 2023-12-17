@@ -1,10 +1,5 @@
-"""
-    Importing parent class "Class Base"
-"""
 from base import Base
-"""
-    Derived Class initialization
-"""
+
 class Rectangle(Base):
     """Rectangle class inherits from Base."""
 
