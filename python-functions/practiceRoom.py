@@ -294,8 +294,22 @@
 #################################################
 ############# Function Recusion ############
 #################################################
-print("*" * 100)
-print(" Function Recusion  ".center(100, "#"))
-print(("*" * 100) + "\n") 
+# print("*" * 100)
+# print(" Function Recusion  ".center(100, "#"))
+# print(("*" * 100) + "\n") 
 
-  
+
+import json
+
+
+phone = {
+    "name": "iPhone",
+    "model": 15
+}
+
+convToJson = json.dumps(phone)
+
+print(f"This is Json data: {(convToJson)} ")
+print(f"This is Json a Dictionary: {phone} ")
+print(type(convToJson))
+print(dir(json))
