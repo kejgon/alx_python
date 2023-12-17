@@ -1,7 +1,10 @@
-
+"""
+    Rectangle class inherits from Base.
+"""
 from base import Base
-"""Rectangle class inherits from Base."""
-
+"""
+    Rectangle class inherits from Base.
+"""
 class Rectangle(Base):
     """Rectangle class inherits from Base."""
 
