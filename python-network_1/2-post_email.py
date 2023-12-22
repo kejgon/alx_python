@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import requests
 import sys
 
@@ -7,6 +8,12 @@ if len(sys.argv) != 3:
 
 url = sys.argv[1]
 email = sys.argv[2]
+
+# Ensure there is a slash between the URL and the email parameter
+if url.endswith('/'):
+    url += 'withemail=' + email
+else:
+    url += '/withemail=' + email
 
 payload = {'email': email}
 response = requests.post(url, data=payload)
