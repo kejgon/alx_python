@@ -1,22 +1,13 @@
-#!/usr/bin/python3
-import requests
-import sys
+from flask import Flask, request
 
-if len(sys.argv) != 3:
-    print("Usage: {} <URL> <email>".format(sys.argv[0]))
-    sys.exit(1)
+app = Flask(__name__)
 
-url = sys.argv[1]
-email = sys.argv[2]
+@app.route("/", methods=['HEAD', 'OPTIONS', 'POST'], strict_slashes=False)
+def index():
+    """ Root
+    """
+    email = request.form.get('email', '')
+    return "Your email is: {}".format(email)
 
-# Ensure there is a slash between the URL and the email parameter
-if url.endswith('/'):
-    url += 'withemail=' + email
-else:
-    url += '/withemail=' + email
-
-payload = {'email': email}
-response = requests.post(url, data=payload)
-
-print("Your email is: {}".format(email))
-print(response.text)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5050)
