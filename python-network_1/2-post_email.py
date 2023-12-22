@@ -1,13 +1,15 @@
-from flask import Flask, request
+import requests
+import sys
 
-app = Flask(__name__)
+if len(sys.argv) != 3:
+    print("Usage: {} <URL> <email>".format(sys.argv[0]))
+    sys.exit(1)
 
-@app.route("/", methods=['HEAD', 'OPTIONS', 'POST'], strict_slashes=False)
-def index():
-    """ Root
-    """
-    email = request.form.get('email', '')
-    return "Your email is: {}".format(email)
+url = sys.argv[1]
+email = sys.argv[2]
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5050)
+payload = {'email': email}
+response = requests.post(url, data=payload)
+
+print("Your email is: {}".format(email))
+print(response.text)
