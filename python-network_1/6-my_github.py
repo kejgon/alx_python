@@ -2,7 +2,7 @@ import requests
 import sys
 
 if len(sys.argv) != 3:
-    print("Usage: {} <username> <token>".format(sys.argv[0]))
+    print("Usage: {} <kejgon> <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>".format(sys.argv[0]))
     sys.exit(1)
 
 username = sys.argv[1]
