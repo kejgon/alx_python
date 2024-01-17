@@ -6,7 +6,7 @@ def list_states_starting_with_N(username, password, database):
     db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
     cursor = db.cursor()
 
-    # Execute query to get states starting with 'N'
+    # Execute query to get states starting with 'N' (case-sensitive)
     cursor.execute("SELECT id, name FROM states WHERE name LIKE 'N%' ORDER BY id")
 
     # Fetch all rows
@@ -28,5 +28,5 @@ if __name__ == "__main__":
     # Get username, password, and database from command line arguments
     username, password, database = sys.argv[1:]
 
-    # Call the function to list states starting with 'N'
+    # Call the function to list states starting with 'N' (capital 'N')
     list_states_starting_with_N(username, password, database)
