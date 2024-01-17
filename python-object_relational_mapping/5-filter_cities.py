@@ -8,7 +8,7 @@ def list_cities_by_state(username, password, database, state_name):
 
     # Execute parameterized query to list cities of the specified state
     query = """
-    SELECT cities.id, cities.name
+    SELECT cities.name
     FROM cities
     JOIN states ON cities.state_id = states.id
     WHERE states.name = %s
@@ -19,9 +19,11 @@ def list_cities_by_state(username, password, database, state_name):
     # Fetch all rows
     cities = cursor.fetchall()
 
+    # Format the output
+    city_names = ', '.join(city[0] for city in cities)
+
     # Print the results
-    for city in cities:
-        print(city)
+    print(city_names)
 
     # Close the database connection
     db.close()
