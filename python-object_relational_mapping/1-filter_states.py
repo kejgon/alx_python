@@ -7,7 +7,7 @@ def list_states_starting_with_N(username, password, database):
     cursor = db.cursor()
 
     # Execute query to get states starting with 'N' (case-sensitive)
-    cursor.execute("SELECT id, name FROM states WHERE name LIKE 'N%' ORDER BY id")
+    cursor.execute("SELECT id, name FROM states WHERE name LIKE 'N%' COLLATE utf8mb4_general_ci ORDER BY id")
 
     # Fetch all rows
     states = cursor.fetchall()
