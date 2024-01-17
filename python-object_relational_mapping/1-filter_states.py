@@ -16,7 +16,7 @@ def list_states_starting_with_N(username, password, database):
     for state in states:
         print(state)
 
-    # Close the database connection
+    # Close the database connections
     db.close()
 
 if __name__ == "__main__":
