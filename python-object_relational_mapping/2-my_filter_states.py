@@ -7,8 +7,8 @@ def search_states(username, password, database, state_name):
     cursor = db.cursor()
 
     # Execute query to search for states based on state_name
-    query = "SELECT id, name FROM states WHERE name = %s ORDER BY id"
-    cursor.execute(query, (state_name,))
+    query = "SELECT id, name FROM states WHERE name = '{}' ORDER BY id".format(state_name)
+    cursor.execute(query)
 
     # Fetch all rows
     states = cursor.fetchall()
