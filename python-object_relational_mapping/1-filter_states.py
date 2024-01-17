@@ -7,7 +7,7 @@ def list_states_starting_with_N(username, password, database):
     cursor = db.cursor()
 
     # Execute query to get states starting with 'N' (case-sensitive)
-    cursor.execute("SELECT id, name FROM states WHERE name LIKE 'N%' COLLATE utf8mb4_general_ci ORDER BY id")
+    cursor.execute("SELECT id, name FROM states WHERE name LIKE 'N%' OR name LIKE 'n%' ORDER BY id")
 
     # Fetch all rows
     states = cursor.fetchall()
@@ -16,7 +16,7 @@ def list_states_starting_with_N(username, password, database):
     for state in states:
         print(state)
 
-    # Close the database connections
+    # Close the database connection
     db.close()
 
 if __name__ == "__main__":
@@ -28,5 +28,5 @@ if __name__ == "__main__":
     # Get username, password, and database from command line arguments
     username, password, database = sys.argv[1:]
 
-    # Call the function to list states starting with 'N' (capital 'N')
+    # Call the function to list states starting with 'N' (case-insensitive)
     list_states_starting_with_N(username, password, database)
