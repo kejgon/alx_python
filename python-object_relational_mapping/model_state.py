@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+# creating class State
 class State(Base):
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, autoincrement=True)
