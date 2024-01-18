@@ -1,22 +1,21 @@
-'''
-    Importing  SQLAlchemy
-'''
+""" Importing  SQLAlchemy
+"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
-'''
-     Creating an Object
-'''
+"""  Creating an Object
+"""
 Base = declarative_base()
 
-'''
-   reating class State 
-'''
+"""  Creating class State 
+"""
 class State(Base):
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(128), nullable=False)
 
+"""  Main section 
+"""
 if __name__ == "__main__":
     # Assuming MySQL server is running on localhost with default port 3306
     engine = create_engine('mysql+mysqldb://kejgon:Password@localhost:3306/hbtn_test_db_5')
