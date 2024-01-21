@@ -4,8 +4,7 @@ Keyword arguments:
 argument -- description
 Return: return_description
 """
-
-from flask import Flask
+from flask import Flask, escape
 
 # Create a Flask application instance
 app = Flask(__name__)
@@ -23,13 +22,27 @@ def hello_hbnb():
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
     """
-    Route handler for the root URL.
+    Route handler for the '/hbnb' URL.
 
     Returns:
-        str: A string containing the "Hello HBNB!" message.
+        str: A string containing the "HBNB" message.
     """
     return "HBNB"
 
+@app.route('/c/<text>', strict_slashes=False)
+def c_with_text(text):
+    """
+    Route handler for the '/c/<text>' URL.
+
+    Args:
+        text (str): The value of the 'text' variable from the URL.
+
+    Returns:
+        str: A string containing "C " followed by the value of the 'text' variable.
+    """
+    # Replace underscore (_) symbols with a space
+    formatted_text = escape(text.replace('_', ' '))
+    return f"C {formatted_text}"
 
 if __name__ == '__main__':
     # Run the Flask application on 0.0.0.0 (accessible from any network interface) and port 5000
