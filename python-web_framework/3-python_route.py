@@ -44,8 +44,9 @@ def c_with_text(text):
     formatted_text = escape(text.replace('_', ' '))
     return f"C {formatted_text}"
 
+@app.route('/python/', defaults={'text': 'is_cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python_with_text(text='is_cool'):
+def python_with_text(text):
     """
     Route handler for the '/python/<text>' URL.
 
