@@ -1,3 +1,10 @@
+"""Importing the Flask Framework
+
+Keyword arguments:
+argument -- description
+Return: return_description
+"""
+
 from flask import Flask
 
 # Create a Flask application instance
