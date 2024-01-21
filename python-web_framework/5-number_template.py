@@ -85,7 +85,7 @@ def number_template(n):
         str: A HTML page with an H1 tag containing "Number: n" if n is an integer.
     """
     if isinstance(n, int):
-        return render_template('number_template.html', n=n)
+        return render_template('5-number.html', n=n)
     else:
         return "Not a valid integer"
 
