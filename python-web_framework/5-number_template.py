@@ -4,7 +4,7 @@ Keyword arguments:
 argument -- description
 Return: return_description
 """
-from flask import Flask, escape, render_template
+from flask import Flask, render_template
 
 # Create a Flask application instance
 app = Flask(__name__)
@@ -41,8 +41,7 @@ def c_with_text(text):
         str: A string containing "C " followed by the value of the 'text' variable.
     """
     # Replace underscore (_) symbols with a space
-    formatted_text = escape(text.replace('_', ' '))
-    return f"C {formatted_text}"
+    return f"C {text.replace('_', ' ')}"
 
 @app.route('/python/', defaults={'text': 'is_cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
@@ -57,21 +56,7 @@ def python_with_text(text):
         str: A string containing "Python " followed by the value of the 'text' variable.
     """
     # Replace underscore (_) symbols with a space
-    formatted_text = escape(text.replace('_', ' '))
-    return f"Python {formatted_text}"
-
-@app.route('/number/<int:n>', strict_slashes=False)
-def number(n):
-    """
-    Route handler for the '/number/<n>' URL.
-
-    Args:
-        n (int): The value of the 'n' variable from the URL.
-
-    Returns:
-        str: A string containing "n is a number" only if n is an integer.
-    """
-    return f"{n} is a number"
+    return f"Python {text.replace('_', ' ')}"
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
@@ -82,12 +67,9 @@ def number_template(n):
         n (int): The value of the 'n' variable from the URL.
 
     Returns:
-        str: A HTML page with an H1 tag containing "Number: n" if n is an integer.
+        str: A rendered HTML page with an H1 tag containing "Number: n" if n is an integer.
     """
-    if isinstance(n, int):
-        return render_template('5-number.html', n=n)
-    else:
-        return "Not a valid integer"
+    return render_template('5-number.html', n=n)
 
 if __name__ == '__main__':
     # Run the Flask application on 0.0.0.0 (accessible from any network interface) and port 5000
