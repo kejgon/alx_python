@@ -15,7 +15,7 @@ db_host = sys.argv[3]
 db_name = sys.argv[4]
 
 # Constructing the SQLAlchemy URI
-db_uri = f"mysql+mysqldb://{db_username}:{db_password}@{db_host}/{db_name}"
+db_uri = f"mysql://{db_username}:{db_password}@{db_host}/{db_name}"
 
 # Configuring Flask app
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
