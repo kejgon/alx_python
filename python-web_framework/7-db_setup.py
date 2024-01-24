@@ -1,13 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+import sys
 
 app = Flask(__name__)
 
-# Replace 'kejgon', 'Password', 'localhost:3306', and 'alx_flask_db' with your actual credentials and database information
-db_username = 'kejgon'
-db_password = 'Password'
-db_host = 'localhost:3306'
-db_name = 'alx_flask_db'
+# Check for command-line arguments
+if len(sys.argv) != 5:
+    print("Usage: python app.py <db_username> <db_password> <db_host> <db_name>")
+    sys.exit(1)
+
+db_username = sys.argv[1]
+db_password = sys.argv[2]
+db_host = sys.argv[3]
+db_name = sys.argv[4]
 
 # Constructing the SQLAlchemy URI
 db_uri = f"mysql+mysqldb://{db_username}:{db_password}@{db_host}/{db_name}"
@@ -19,7 +24,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Creating SQLAlchemy instance
 db = SQLAlchemy(app)
 
-# Your USER Model class here
+# Your model class here
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -35,9 +40,7 @@ def create_tables():
 
 create_tables()  # This calls the function to create tables
 
-@app.route('/', strict_slashes=False)
-def index():
-    return "Hello, ALX Flask!"
+# Your routes and other Flask code here
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
