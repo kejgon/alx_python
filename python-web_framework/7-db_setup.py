@@ -1,18 +1,18 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import sys
 
 app = Flask(__name__)
 
 # Check for command-line arguments
-if len(sys.argv) != 5:
-    print("Usage: python app.py <db_username> <db_password> <db_host> <db_name>")
+if len(sys.argv) != 4:
+    print("Usage: python 7-db_setup.py <db_username> <db_password> <db_name>")
     sys.exit(1)
 
 db_username = sys.argv[1]
 db_password = sys.argv[2]
-db_host = sys.argv[3]
-db_name = sys.argv[4]
+db_name = sys.argv[3]
+db_host = 'localhost'
 
 # Constructing the SQLAlchemy URI
 db_uri = f"mysql://{db_username}:{db_password}@{db_host}/{db_name}"
@@ -27,11 +27,8 @@ db = SQLAlchemy(app)
 # Your model class here
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-
-    def __repr__(self):
-        return f'<User {self.username}>'
+    name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
 
 # Create the database tables
 def create_tables():
