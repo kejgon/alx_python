@@ -1,30 +1,25 @@
-from flask import Flask, request, render_template, flash, redirect, url_for
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import re
-import sys
-
-# Check for command-line arguments
-if len(sys.argv) != 4:
-    print("Usage: python 8-add_retrieve_users.py <db_username> <db_password> <db_name>")
-    sys.exit(1)
-
-db_username = sys.argv[1]
-db_password = sys.argv[2]
-db_name = sys.argv[3]
-db_host = 'localhost'
 
 app = Flask(__name__)
 
-############################# TO DO 1 ############################
-# Add your code to connect to the database here
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqldb://{db_username}:{db_password}@{db_host}/{db_name}"
+# Replace 'kejgon', 'Password', 'localhost:3306', and 'alx_flask_db' with your actual credentials and database information
+db_username = 'kejgon'
+db_password = 'Password'
+db_host = 'localhost:3306'
+db_name = 'alx_flask_db'
+
+# Constructing the SQLAlchemy URI
+db_uri = f"mysql+mysqldb://{db_username}:{db_password}@{db_host}/{db_name}"
+
+# Configuring Flask app
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Creating SQLAlchemy instance
 db = SQLAlchemy(app)
 
-###################################################################
-
-############################ TO DO 2 ##############################
-# Define your USER Model class here
+# Your USER Model class here
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -32,7 +27,6 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
-###################################################################
 
 # Create the database tables
 def create_tables():
