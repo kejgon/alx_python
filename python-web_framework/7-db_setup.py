@@ -1,10 +1,11 @@
-from flask import Flask
+from flask import Flask, request, render_template, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import re
 import sys
 
 # Check for command-line arguments
 if len(sys.argv) != 4:
-    print("Usage: python 7-db_setup.py <db_username> <db_password> <db_name>")
+    print("Usage: python 8-add_retrieve_users.py <db_username> <db_password> <db_name>")
     sys.exit(1)
 
 db_username = sys.argv[1]
@@ -18,16 +19,18 @@ app = Flask(__name__)
 # Add your code to connect to the database here
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqldb://{db_username}:{db_password}@{db_host}/{db_name}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-###################################################################
-
 db = SQLAlchemy(app)
+###################################################################
 
 ############################ TO DO 2 ##############################
 # Define your USER Model class here
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), unique=True, nullable=False)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return f'<User {self.username}>'
 ###################################################################
 
 # Create the database tables
@@ -37,22 +40,9 @@ def create_tables():
 
 create_tables()  # This calls the function to create tables
 
-"""Importing SQLAlchemy"""
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-
-"""Creating a Base object"""
-Base = declarative_base()
-
-"""Creating the State class"""
-class State(Base):
-    """Class representing the 'states' table in the database."""
-    __tablename__ = 'states'
-    
-    # Columns
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(128), nullable=False)
+@app.route('/', strict_slashes=False)
+def index():
+    return "Hello, ALX Flask!"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
