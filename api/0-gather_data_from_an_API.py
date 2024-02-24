@@ -16,12 +16,12 @@ def get_employee_todo_progress(employee_id):
     num_completed_tasks = len(completed_tasks)
     total_tasks = len(todo_data)
 
-    # Print employee progress
+    # Print employee progresss
     print(f"Employee {employee_name} is done with tasks({num_completed_tasks}/{total_tasks}):")
 
     # Print titles of completed tasks
     for task in completed_tasks:
-        print(f"\t{task['title']}")
+        print(f"\t{task['title']}")  # Indentation corrected to exactly one tab
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
