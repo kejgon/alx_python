@@ -3,6 +3,7 @@ import requests
 import sys
 from sys import argv
 
+
 def export_to_CSV(sizeofReq):
     """ Export employee's TODO list data to a CSV file """
 
@@ -29,11 +30,19 @@ def export_to_CSV(sizeofReq):
         allTasks.append(taskRow)  # Append task data to allTasks list
 
     # Write task data to a CSV file
-    with open("{}.csv".format(sizeofReq), "w") as csvFile:
+    filename = "{}.csv".format(sizeofReq)
+    with open(filename, "w", newline='') as csvFile:
         csvWriter = csv.writer(csvFile, quoting=csv.QUOTE_ALL)  # Create a CSV writer object
         csvWriter.writerows(allTasks)  # Write allTasks data to the CSV file
 
+    print(f"CSV file '{filename}' created successfully.")
+
     return 0
 
+
 if __name__ == '__main__':
+    if len(argv) != 2:
+        print("Usage: python script.py EMPLOYEE_ID")
+        sys.exit(1)
+
     export_to_CSV(int(argv[1]))  # Fetch employee ID from command line argument and export data to CSV
