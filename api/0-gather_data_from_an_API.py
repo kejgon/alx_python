@@ -1,45 +1,42 @@
-
 import requests
 import sys
-from sys import argv
-
+from sys import argv  # Importing argv from sys module
 
 def get_employee(sizeofReq):
-    """ Use API from jsonplaceholder """
+    """ Use API from jsonplaceholder to get employee's TODO list progress """
 
     # Variables
-    taskList = []
-    count = 0
+    taskList = []  # Initialize an empty list to store completed task titles
+    count = 0  # Initialize a counter for completed tasks
 
-    link = "https://jsonplaceholder.typicode.com"
+    link = "https://jsonplaceholder.typicode.com"  # Base URL for the API
 
-    # get requests
+    # GET requests to fetch user details and TODO list
     usersRes = requests.get(
         "{}/users/{}".format(link, sizeofReq))
     todosRes = requests.get(
         "{}/users/{}/todos".
         format(link, sizeofReq))
 
-    # Get the json from responses
-    name = usersRes.json().get('name')
-    todosJson = todosRes.json()
+    # Get the JSON data from responses
+    name = usersRes.json().get('name')  # Extract employee name from user response
+    todosJson = todosRes.json()  # Extract TODO list JSON data
 
-    # Save the employee Name -- Loop the tasks
+    # Save the employee Name and Loop through the tasks
     for task in todosJson:
         if task.get('completed') is True:
-            count += 1
-            # save the task title to taskList
-            taskList.append(task.get('title'))
+            count += 1  # Increment count for completed tasks
+            taskList.append(task.get('title'))  # Save completed task title to taskList
 
-    # Print the first line
+    # Print the first line with employee's progress
     print('Employee {} is done with tasks({}/{}):'.format(
         name, count, len(todosJson)))
-    # Loop the taskList and print tasks
+
+    # Loop through taskList and print completed tasks
     for title in taskList:
-        print('\t {}'.format(title))
+        print('\t {}'.format(title))  # Print each completed task title with indentation
 
     return 0
 
-
 if __name__ == '__main__':
-    get_employee(argv[1])
+    get_employee(argv[1])  # Fetch employee progress using command line argument
