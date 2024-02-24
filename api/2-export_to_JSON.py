@@ -1,10 +1,10 @@
 import requests
 import sys
-import csv
-from sys import argv
+from sys import argv  # Importing argv from sys module
+import json
 
-def export_to_CSV(employee_id):
-    """ Export employee's TODO list data to a CSV file """
+def export_to_JSON(employee_id):
+    """ Export employee's TODO list data to a JSON file """
 
     # Base URL for the API
     base_url = "https://jsonplaceholder.typicode.com"
@@ -21,23 +21,22 @@ def export_to_CSV(employee_id):
     user_id = user_data['id']
     username = user_data['username']
 
-    # Prepare list to store task data
-    tasks_rows = []
+    # Prepare dictionary to store task data
+    tasks_dict = {"USER_ID": [], "username": username}
 
     # Iterate over todo items and extract relevant information
     for todo in todos_data:
-        task_completed_status = str(todo['completed'])
         task_title = todo['title']
-        tasks_rows.append([user_id, username, task_completed_status, task_title])
+        task_completed_status = todo['completed']
+        task_dict = {"task": task_title, "completed": task_completed_status, "username": username}
+        tasks_dict["USER_ID"].append(task_dict)
 
-    # Write task data to a CSV file
-    filename = f"{user_id}.csv"
-    with open(filename, "w", newline='') as csvFile:
-        csvWriter = csv.writer(csvFile)
-        csvWriter.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])  # Write header
-        csvWriter.writerows(tasks_rows)
+    # Write task data to a JSON file
+    filename = f"{user_id}.json"
+    with open(filename, "w") as json_file:
+        json.dump(tasks_dict, json_file, indent=4)
 
-    print(f"CSV file '{filename}' created successfully.")
+    print(f"JSON file '{filename}' created successfully.")
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
@@ -45,4 +44,4 @@ if __name__ == '__main__':
         sys.exit(1)
 
     employee_id = int(sys.argv[1])
-    export_to_CSV(employee_id)
+    export_to_JSON(employee_id)
