@@ -1,32 +1,28 @@
 import requests
 import sys
 
-def get_employee_todo_progress(employee_id):
-    # Fetch employee details
-    employee_response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}')
-    employee_data = employee_response.json()
-    employee_name = employee_data['name']
+def check_tasks(id):
+    """ Fetch user name, number of tasks """
+    
+    # Fetch user name
+    user_response = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}')
+    user_data = user_response.json()
+    username = user_data['name']
+    
+    # Fetch tasks
+    tasks_response = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}/todos')
+    tasks_data = tasks_response.json()
+    total_tasks = len(tasks_data)
+    completed_tasks = sum(1 for task in tasks_data if task['completed'])
 
-    # Fetch employee's TODO list
-    todo_response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos')
-    todo_data = todo_response.json()
-
-    # Calculate number of completed tasks
-    completed_tasks = [task for task in todo_data if task['completed']]
-    num_completed_tasks = len(completed_tasks)
-    total_tasks = len(todo_data)
-
-    # Print employee progresss
-    print(f"Employee {employee_name} is done with tasks({num_completed_tasks}/{total_tasks}):")
+    print(f"Employee {username} is done with tasks({completed_tasks}/{total_tasks}):")
 
     # Print titles of completed tasks
-    for task in completed_tasks:
-        print(f"\t{task['title']}")  # Indentation corrected to exactly one tab
+    for count, task in enumerate(tasks_data, start=1):
+        if task['completed']:
+            print(f"\t{task['title']}")  # Indentation corrected to exactly one tab
+        else:
+            print(f"Task {count} Formatting: Incorrect")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py EMPLOYEE_ID")
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    get_employee_todo_progress(employee_id)
+    check_tasks(int(sys.argv[1]))
