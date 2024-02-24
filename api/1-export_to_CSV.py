@@ -1,48 +1,46 @@
 import csv
 import requests
 import sys
-from sys import argv
 
-
-def export_to_CSV(sizeofReq):
-    """ Export employee's TODO list data to a CSV file """
-
-    # Variables
-    allTasks = []  # List to store all tasks data
-
-    link = "https://jsonplaceholder.typicode.com"  # Base URL for the API
-
+def export_to_CSV(employee_id):
+    """Export employee's TODO list data to a CSV file"""
+    
+    # Base URL for the API
+    base_url = "https://jsonplaceholder.typicode.com"
+    
     # GET requests to fetch user details and TODO list
-    usersRes = requests.get("{}/users/{}".format(link, sizeofReq))
-    todosRes = requests.get("{}/users/{}/todos".format(link, sizeofReq))
-
-    # Get the JSON data from responses
-    name = usersRes.json().get('username')  # Extract employee username from user response
-    todosJson = todosRes.json()  # Extract TODO list JSON data
-
-    # Save the employee data and loop through the tasks to save task data
-    for task in todosJson:
-        taskRow = []  # List to store data for each task
-        taskRow.append(sizeofReq)  # Add employee ID to task data
-        taskRow.append(name)  # Add employee name to task data
-        taskRow.append(task.get('completed'))  # Add task completion status to task data
-        taskRow.append(task.get('title'))  # Add task title to task data
-        allTasks.append(taskRow)  # Append task data to allTasks list
-
+    user_response = requests.get(f"{base_url}/users/{employee_id}")
+    todos_response = requests.get(f"{base_url}/users/{employee_id}/todos")
+    
+    # Extract JSON data from responses
+    user_data = user_response.json()
+    todos_data = todos_response.json()
+    
+    # Extract user information
+    user_id = user_data['id']
+    username = user_data['username']
+    
+    # Prepare list to store task data
+    task_rows = []
+    
+    # Iterate over todo items and extract relevant information
+    for todo in todos_data:
+        task_completed_status = str(todo['completed'])
+        task_title = todo['title']
+        task_rows.append([user_id, username, task_completed_status, task_title])
+    
     # Write task data to a CSV file
-    filename = "{}.csv".format(sizeofReq)
+    filename = f"{user_id}.csv"
     with open(filename, "w", newline='') as csvFile:
-        csvWriter = csv.writer(csvFile, quoting=csv.QUOTE_ALL)  # Create a CSV writer object
-        csvWriter.writerows(allTasks)  # Write allTasks data to the CSV file
+        csvWriter = csv.writer(csvFile)
+        csvWriter.writerows(task_rows)
 
     print(f"CSV file '{filename}' created successfully.")
 
-    return 0
-
-
 if __name__ == '__main__':
-    if len(argv) != 2:
+    if len(sys.argv) != 2:
         print("Usage: python script.py EMPLOYEE_ID")
         sys.exit(1)
 
-    export_to_CSV(int(argv[1]))  # Fetch employee ID from command line argument and export data to CSV
+    employee_id = int(sys.argv[1])
+    export_to_CSV(employee_id)
