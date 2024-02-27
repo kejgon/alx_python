@@ -11,35 +11,32 @@ def export_to_CSV(employee_id):
     link = "https://jsonplaceholder.typicode.com"  # Base URL for the API
 
     # GET requests to fetch user details and TODO list
-    usersRes = requests.get(f"{link}/users/{employee_id}")
-    todosRes = requests.get(f"{link}/users/{employee_id}/todos")
+    usersRes = requests.get("{}/users/{}".format(link, employee_id))
+    todosRes = requests.get("{}/users/{}/todos".format(link, employee_id))
 
     # Get the JSON data from responses
-    employee_id = usersRes.json().get('id')  # Extract employee ID from user response
-    name = usersRes.json().get('username')  # Extract employee username from user response
+    employee_data = usersRes.json()  # Extract employee data
     todosJson = todosRes.json()  # Extract TODO list JSON data
 
     # Save the employee data and loop through the tasks to save task data
     for task in todosJson:
-        taskRow = []  # List to store data for each task
-        taskRow.append(employee_id)  # Add employee ID to task data
-        taskRow.append(name)  # Add employee name to task data
-        taskRow.append(task.get('completed'))  # Add task completion status to task data
-        taskRow.append(task.get('title'))  # Add task title to task data
+        taskRow = [employee_data['id'], employee_data['username'], task.get('completed'), task.get('title')]
         allTasks.append(taskRow)  # Append task data to allTasks list
 
     # Write task data to a CSV file
     filename = f"{employee_id}.csv"
-    with open(filename, "w") as csvFile:
+    with open(filename, "w", newline='') as csvFile:
         csvWriter = csv.writer(csvFile, quoting=csv.QUOTE_ALL)  # Create a CSV writer object
+        csvWriter.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])  # Write header
         csvWriter.writerows(allTasks)  # Write allTasks data to the CSV file
 
-    return filename, len(todosJson)
+    return filename, len(allTasks)  # Return filename and number of tasks
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Usage: python script.py EMPLOYEE_ID")
         sys.exit(1)
 
-    csv_filename, num_tasks = export_to_CSV(int(sys.argv[1]))  # Fetch employee ID from command line argument and export data to CSV
+    employee_id = int(sys.argv[1])
+    csv_filename, num_tasks = export_to_CSV(employee_id)
     print(f"CSV file '{csv_filename}' created with {num_tasks} tasks.")
