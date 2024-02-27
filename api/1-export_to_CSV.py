@@ -1,5 +1,5 @@
-import requests
 import csv
+import requests
 import sys
 
 def export_to_CSV(sizeofReq):
