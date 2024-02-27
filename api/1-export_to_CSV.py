@@ -1,52 +1,8 @@
-# import requests
-# import sys
-# from csv import writer
-
-# def get_employee(sizeofReq):
-#   """ Use API from jsonplaceholder to get employee's TODO list progress and export to CSV """
-
-#   # Variables
-#   taskList = []
-#   count = 0
-
-#   link = "https://jsonplaceholder.typicode.com"
-
-#   # GET requests to fetch user details and TODO list
-#   usersRes = requests.get(
-#       "{}/users/{}".format(link, sizeofReq))
-#   todosRes = requests.get(
-#       "{}/users/{}/todos".format(link, sizeofReq))
-
-#   # Get the JSON data from responses
-#   name = usersRes.json().get('name')
-#   todosJson = todosRes.json()
-
-#   # Save the employee name and loop through the tasks
-#   for task in todosJson:
-#     taskList.append([
-#         sizeofReq,  # User ID
-#         name,       # Username
-#         task.get('completed'),  # Completed Status
-#         task.get('title')      # Task Title
-#     ])
-
-#   # Open CSV file for writing with user ID as filename
-#   with open(f"{sizeofReq}.csv", "w", newline='') as csvfile:
-#     csv_writer = writer(csvfile)
-#     csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])  # Header row
-#     csv_writer.writerows(taskList)  # Write task data
-
-#   # Print confirmation message
-#   print(f"Employee data exported to {sizeofReq}.csv")
-
-#   return 0
-
-# if __name__ == '__main__':
-#   get_employee(argv[1])
+''' CSV '''
 import requests
 import csv
 import sys
-from sys import argv
+from sys import argv  # Importing argv from sys module
 
 def get_employee(sizeofReq):
     """ Use API from jsonplaceholder to get employee's TODO list progress """
