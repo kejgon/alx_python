@@ -1,42 +1,41 @@
+""" Using what you did in the task #0, extend your Python script to export
+data in the CSV format. """
 import csv
 import requests
-import sys
+from sys import argv
 
-def export_to_CSV(employee_id):
-    """ Export employee's TODO list data to a CSV file """
+
+def export_to_CSV(sizeofReq):
+    """ The task define export to the CSV format"""
 
     # Variables
-    allTasks = []  # List to store all tasks data
+    allTasks = []
 
-    link = "https://jsonplaceholder.typicode.com"  # Base URL for the API
+    link = "https://jsonplaceholder.typicode.com"
 
-    # GET requests to fetch user details and TODO list
-    usersRes = requests.get("{}/users/{}".format(link, employee_id))
-    todosRes = requests.get("{}/users/{}/todos".format(link, employee_id))
+    # get requests
+    usersRes = requests.get("{}/users/{}".format(link, sizeofReq))
+    todosRes = requests.get("{}/users/{}/todos".format(link, sizeofReq))
 
-    # Get the JSON data from responses
-    employee_data = usersRes.json()  # Extract employee data
-    todosJson = todosRes.json()  # Extract TODO list JSON data
+    # Get the json from responses
+    name = usersRes.json().get('username')
+    todosJson = todosRes.json()
 
-    # Save the employee data and loop through the tasks to save task data
+    # Save the employee Name -- Loop the tasks and save
     for task in todosJson:
-        taskRow = [employee_data['id'], employee_data['username'], task.get('completed'), task.get('title')]
-        allTasks.append(taskRow)  # Append task data to allTasks list
+        taskRow = []
+        taskRow.append(sizeofReq)
+        taskRow.append(name)
+        taskRow.append(task.get('completed'))
+        taskRow.append(task.get('title'))
+        allTasks.append(taskRow)
 
-    # Write task data to a CSV file
-    filename = f"{employee_id}.csv"
-    with open(filename, "w", newline='') as csvFile:
-        csvWriter = csv.writer(csvFile, quoting=csv.QUOTE_ALL)  # Create a CSV writer object
-        csvWriter.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])  # Write header
-        csvWriter.writerows(allTasks)  # Write allTasks data to the CSV file
+    with open("{}.csv".format(sizeofReq), "w") as csvFile:
+        csvWriter = csv.writer(csvFile, quoting=csv.QUOTE_ALL)
+        csvWriter.writerows(allTasks)
 
-    return filename, len(allTasks)  # Return filename and number of tasks
+    return 0
+
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: python script.py EMPLOYEE_ID")
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    csv_filename, num_tasks = export_to_CSV(employee_id)
-    print(f"CSV file '{csv_filename}' created with {num_tasks} tasks.")
+    export_to_CSV(int(argv[1]))
