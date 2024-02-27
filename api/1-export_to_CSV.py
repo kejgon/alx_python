@@ -1,48 +1,91 @@
+# import requests
+# import sys
+# from csv import writer
+
+# def get_employee(sizeofReq):
+#   """ Use API from jsonplaceholder to get employee's TODO list progress and export to CSV """
+
+#   # Variables
+#   taskList = []
+#   count = 0
+
+#   link = "https://jsonplaceholder.typicode.com"
+
+#   # GET requests to fetch user details and TODO list
+#   usersRes = requests.get(
+#       "{}/users/{}".format(link, sizeofReq))
+#   todosRes = requests.get(
+#       "{}/users/{}/todos".format(link, sizeofReq))
+
+#   # Get the JSON data from responses
+#   name = usersRes.json().get('name')
+#   todosJson = todosRes.json()
+
+#   # Save the employee name and loop through the tasks
+#   for task in todosJson:
+#     taskList.append([
+#         sizeofReq,  # User ID
+#         name,       # Username
+#         task.get('completed'),  # Completed Status
+#         task.get('title')      # Task Title
+#     ])
+
+#   # Open CSV file for writing with user ID as filename
+#   with open(f"{sizeofReq}.csv", "w", newline='') as csvfile:
+#     csv_writer = writer(csvfile)
+#     csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])  # Header row
+#     csv_writer.writerows(taskList)  # Write task data
+
+#   # Print confirmation message
+#   print(f"Employee data exported to {sizeofReq}.csv")
+
+#   return 0
+
+# if __name__ == '__main__':
+#   get_employee(argv[1])
 import requests
-import sys
 import csv
+import sys
 from sys import argv
 
-def export_to_CSV(employee_id):
-    """ Export employee's TODO list data to a CSV file """
+def get_employee(sizeofReq):
+    """ Use API from jsonplaceholder to get employee's TODO list progress """
 
-    # Base URL for the API
-    base_url = "https://jsonplaceholder.typicode.com"
+    # Variables
+    taskList = []  # Initialize an empty list to store completed task titles
+    count = 0  # Initialize a counter for completed tasks
+
+    link = "https://jsonplaceholder.typicode.com"  # Base URL for the API
 
     # GET requests to fetch user details and TODO list
-    users_response = requests.get(f"{base_url}/users/{employee_id}")
-    todos_response = requests.get(f"{base_url}/users/{employee_id}/todos")
+    usersRes = requests.get(
+        "{}/users/{}".format(link, sizeofReq))
+    todosRes = requests.get(
+        "{}/users/{}/todos".
+        format(link, sizeofReq))
 
-    # Extract JSON data from responses
-    user_data = users_response.json()
-    todos_data = todos_response.json()
+    # Get the JSON data from responses
+    user_id = sizeofReq
+    username = usersRes.json().get('username')  # Extract employee username from user response
+    todosJson = todosRes.json()  # Extract TODO list JSON data
 
-    # Extract user information
-    user_id = user_data['id']
-    username = user_data['username']
+    # Save the employee tasks
+    for task in todosJson:
+        taskList.append([user_id, username, str(task.get('completed')), task.get('title')])
 
-    # Prepare list to store task data
-    tasks_rows = []
+    # Write data to CSV file
+    filename = "{}.csv".format(user_id)
+    with open(filename, 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        # Write header
+        csvwriter.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+        # Write tasks
+        csvwriter.writerows(taskList)
 
-    # Iterate over todo items and extract relevant information
-    for todo in todos_data:
-        task_completed_status = str(todo['completed'])
-        task_title = todo['title']
-        tasks_rows.append([user_id, username, task_completed_status, task_title])
-
-    # Write task data to a CSV file
-    filename = f"{user_id}.csv"
-    with open(filename, "w", newline='') as csvFile:
-        csvWriter = csv.writer(csvFile)
-        csvWriter.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])  # Write header
-        csvWriter.writerows(tasks_rows)
-
-    print(f"CSV file '{filename}' created successfully.")
+    print("Data exported to", filename)
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: python script.py EMPLOYEE_ID")
+    if len(argv) != 2:
+        print("Usage: python3 script.py <user_id>")
         sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    export_to_CSV(employee_id)
+    get_employee(argv[1])  # Fetch employee progress using command line argument
